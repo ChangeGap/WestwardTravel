@@ -373,7 +373,7 @@ export default function App() {
           <div className="hero-inner">
             <span className="kicker">Manitoba · Saskatchewan · Alberta · British Columbia</span>
             <h1 className="display">
-              Wild Rose<span className="amp">&</span>
+              Westward Travel<span className="amp">&</span>
               <em>Western Canada girls' trip planner</em>
             </h1>
             <p className="lede">
