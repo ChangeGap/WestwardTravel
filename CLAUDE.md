@@ -6,11 +6,30 @@ A React + Vite single-page app that helps groups plan Western Canada girls' trip
 
 **Live site:** https://westwardtravel.vercel.app
 
-## Tech Stack
+## Tech Stack (current)
 
 - **React 18** — all UI in `src/App.jsx` (single-file app)
 - **Vite** — dev server (`npm run dev`) and build (`npm run build`)
 - **Vercel** — production deployment via `vercel --prod`
+
+## Target Architecture
+
+The app will be migrated to a full-stack architecture:
+
+| Layer | Choice | Notes |
+|---|---|---|
+| Framework | **Next.js** (App Router) | Vercel-native; replaces Vite/React SPA |
+| Language | **TypeScript** | Strict mode enabled |
+| Database | **Supabase** | Postgres + real-time + storage; replaces hardcoded `ATTRACTIONS` array |
+| Hosting | **Vercel** | Unchanged; Next.js deploys automatically on push to `main` |
+| Auth | **Clerk** | Recommended — first-class Next.js SDK, polished UI components, handles social logins and magic links out of the box; generous free tier. Alternative: Supabase Auth (simpler, already in stack, but less UX polish) |
+
+### Architecture notes
+
+- Supabase will store the attractions database, user trip saves, and any user-generated content
+- Clerk sits in front of Next.js middleware to protect authenticated routes; public quiz flow remains unauthenticated
+- API routes live in `app/api/` using Next.js Route Handlers
+- All data fetching uses the Supabase JS client with typed schemas generated via `supabase gen types typescript`
 
 ## Key Files
 
